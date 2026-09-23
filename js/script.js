@@ -26,3 +26,12 @@ if (programCta) {
     });
   });
 }
+
+document.querySelectorAll('nav a').forEach((link) => {
+  link.addEventListener('click', () => {
+    gtag('event', 'nav_click', {
+      link_text: link.textContent.trim(),
+      from_page: document.title
+    });
+  });
+});
