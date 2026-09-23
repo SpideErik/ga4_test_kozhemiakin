@@ -35,3 +35,14 @@ document.querySelectorAll('nav a').forEach((link) => {
     });
   });
 });
+
+const params = new URLSearchParams(window.location.search);
+const utmSource = params.get('utm_source');
+if (utmSource) {
+  gtag('event', 'utm_visit', {
+    utm_source: utmSource,
+    utm_medium: params.get('utm_medium') || 'not_set',
+    utm_campaign: params.get('utm_campaign') || 'not_set',
+    landing_page: window.location.pathname
+  });
+}
