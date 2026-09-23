@@ -55,3 +55,13 @@ setTimeout(() => {
     page_path: window.location.pathname
   });
 }, 30000);
+
+const leadFormFields = document.querySelector('#contact-form');
+if (leadFormFields) {
+  leadFormFields.addEventListener('invalid', (event) => {
+    gtag('event', 'form_error', {
+      field_name: event.target.name || 'unknown',
+      form_id: 'lead-form'
+    });
+  }, true);
+}
