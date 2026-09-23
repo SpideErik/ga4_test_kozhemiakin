@@ -46,3 +46,12 @@ if (utmSource) {
     landing_page: window.location.pathname
   });
 }
+
+let readCounted = false;
+setTimeout(() => {
+  if (readCounted || document.hidden) return;
+  readCounted = true;
+  gtag('event', 'read_30s', {
+    page_path: window.location.pathname
+  });
+}, 30000);
